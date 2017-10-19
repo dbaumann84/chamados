@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateResReservaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateResReservaLabel_resId}" for="resId" />
+                    <h:inputText id="resId" value="#{resReservaController.selected.resId}" title="#{bundle.CreateResReservaTitle_resId}" required="true" requiredMessage="#{bundle.CreateResReservaRequiredMessage_resId}"/>
+                    <h:outputLabel value="#{bundle.CreateResReservaLabel_resDataHora}" for="resDataHora" />
+                    <h:inputText id="resDataHora" value="#{resReservaController.selected.resDataHora}" title="#{bundle.CreateResReservaTitle_resDataHora}" required="true" requiredMessage="#{bundle.CreateResReservaRequiredMessage_resDataHora}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateResReservaLabel_resDataReservaInicial}" for="resDataReservaInicial" />
+                    <h:inputText id="resDataReservaInicial" value="#{resReservaController.selected.resDataReservaInicial}" title="#{bundle.CreateResReservaTitle_resDataReservaInicial}" required="true" requiredMessage="#{bundle.CreateResReservaRequiredMessage_resDataReservaInicial}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateResReservaLabel_resDataReservaFinal}" for="resDataReservaFinal" />
+                    <h:inputText id="resDataReservaFinal" value="#{resReservaController.selected.resDataReservaFinal}" title="#{bundle.CreateResReservaTitle_resDataReservaFinal}" required="true" requiredMessage="#{bundle.CreateResReservaRequiredMessage_resDataReservaFinal}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateResReservaLabel_resObservacao}" for="resObservacao" />
+                    <h:inputTextarea rows="4" cols="30" id="resObservacao" value="#{resReservaController.selected.resObservacao}" title="#{bundle.CreateResReservaTitle_resObservacao}" />
+                    <h:outputLabel value="#{bundle.CreateResReservaLabel_equId}" for="equId" />
+                    <h:selectOneMenu id="equId" value="#{resReservaController.selected.equId}" title="#{bundle.CreateResReservaTitle_equId}" >
+                        <f:selectItems value="#{equEquipamentoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateResReservaLabel_llabId}" for="llabId" />
+                    <h:selectOneMenu id="llabId" value="#{resReservaController.selected.llabId}" title="#{bundle.CreateResReservaTitle_llabId}" >
+                        <f:selectItems value="#{labLaboratorioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateResReservaLabel_usuUsuarioIdUsuario}" for="usuUsuarioIdUsuario" />
+                    <h:selectOneMenu id="usuUsuarioIdUsuario" value="#{resReservaController.selected.usuUsuarioIdUsuario}" title="#{bundle.CreateResReservaTitle_usuUsuarioIdUsuario}" required="true" requiredMessage="#{bundle.CreateResReservaRequiredMessage_usuUsuarioIdUsuario}">
+                        <f:selectItems value="#{usuUsuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{resReservaController.create}" value="#{bundle.CreateResReservaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{resReservaController.prepareList}" value="#{bundle.CreateResReservaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateResReservaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

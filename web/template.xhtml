@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title><ui:insert name="title">Sistema de Reservas</ui:insert></title>
+        
+       
+        <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+        <h:outputStylesheet library="css" name="style.css"/>
+        <!--        <h:outputStylesheet library="css" name="jsfcrud.css"/>-->
+    </h:head>
+
+    <h:body>
+        <h1>
+            <ui:insert name="title">Reservas Uniasselvi</ui:insert>
+        </h1>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Sistema de Reservas</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <h:link outcome="/usuUsuario/List" value="Usuário"/>
+                        </li>
+                        <li>
+                            <h:link outcome="/resReserva/List" value="Reserva"/>
+                        </li>
+                        <li>
+                            <h:link outcome="/labLaboratorio/List" value="Laboratórios"/>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Equipamentos<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><h:link outcome="/equEquipamento/List" value="Listar equipamentos"/></li>
+                                <li role="separator" class="divider"></li>
+                                <li><h:link outcome="/equipamentoTipo/List" value="Tipos de equipamentos"/></li>
+
+                            </ul>
+                        </li>
+                        <li>
+                            <h:link outcome="/melMelhoria/List" value="Melhorias"/>
+                        </li>
+                        <li>
+                           
+                            <h:link outcome="/parParamentros/List"  value="Configurações"/>
+                        </li>
+
+
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <br/>
+        <ui:insert name="body">
+
+        </ui:insert>
+        <h:outputScript library="js" name="jquery.min.js"/>
+        <h:outputScript library="js" name="bootstrap.min.js"/>
+    </h:body>
+
+</html>

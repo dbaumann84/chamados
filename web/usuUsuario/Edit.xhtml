@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditUsuUsuarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditUsuUsuarioLabel_usuId}" for="usuId" />
+                    <h:inputText id="usuId" value="#{usuUsuarioController.selected.usuId}" title="#{bundle.EditUsuUsuarioTitle_usuId}" required="true" requiredMessage="#{bundle.EditUsuUsuarioRequiredMessage_usuId}"/>
+                    <h:outputLabel value="#{bundle.EditUsuUsuarioLabel_usuNomeCompleto}" for="usuNomeCompleto" />
+                    <h:inputText id="usuNomeCompleto" value="#{usuUsuarioController.selected.usuNomeCompleto}" title="#{bundle.EditUsuUsuarioTitle_usuNomeCompleto}" required="true" requiredMessage="#{bundle.EditUsuUsuarioRequiredMessage_usuNomeCompleto}"/>
+                    <h:outputLabel value="#{bundle.EditUsuUsuarioLabel_usuEmail}" for="usuEmail" />
+                    <h:inputText id="usuEmail" value="#{usuUsuarioController.selected.usuEmail}" title="#{bundle.EditUsuUsuarioTitle_usuEmail}" required="true" requiredMessage="#{bundle.EditUsuUsuarioRequiredMessage_usuEmail}"/>
+                    <h:outputLabel value="#{bundle.EditUsuUsuarioLabel_usuSenha}" for="usuSenha" />
+                    <h:inputText id="usuSenha" value="#{usuUsuarioController.selected.usuSenha}" title="#{bundle.EditUsuUsuarioTitle_usuSenha}" required="true" requiredMessage="#{bundle.EditUsuUsuarioRequiredMessage_usuSenha}"/>
+                    <h:outputLabel value="#{bundle.EditUsuUsuarioLabel_usuAdmin}" for="usuAdmin" />
+                    <h:inputText id="usuAdmin" value="#{usuUsuarioController.selected.usuAdmin}" title="#{bundle.EditUsuUsuarioTitle_usuAdmin}" required="true" requiredMessage="#{bundle.EditUsuUsuarioRequiredMessage_usuAdmin}"/>
+                    <h:outputLabel value="#{bundle.EditUsuUsuarioLabel_usuTelefone}" for="usuTelefone" />
+                    <h:inputText id="usuTelefone" value="#{usuUsuarioController.selected.usuTelefone}" title="#{bundle.EditUsuUsuarioTitle_usuTelefone}" />
+                </h:panelGrid>
+                <h:commandLink action="#{usuUsuarioController.update}" value="#{bundle.EditUsuUsuarioSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditUsuUsuarioViewLink}"/>
+                <br />
+                <h:commandLink action="#{usuUsuarioController.prepareList}" value="#{bundle.EditUsuUsuarioShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditUsuUsuarioIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

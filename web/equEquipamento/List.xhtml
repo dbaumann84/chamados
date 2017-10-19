@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+      
+        <ui:define name="body">
+            
+            <h:form>
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListEquEquipamentoEmpty}" rendered="#{equEquipamentoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{equEquipamentoController.items.rowCount > 0}">
+                    <h:outputText value="#{equEquipamentoController.pagination.pageFirstItem + 1}..#{equEquipamentoController.pagination.pageLastItem + 1}/#{equEquipamentoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{equEquipamentoController.previous}" value="#{bundle.Previous} #{equEquipamentoController.pagination.pageSize}" rendered="#{equEquipamentoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{equEquipamentoController.next}" value="#{bundle.Next} #{equEquipamentoController.pagination.pageSize}" rendered="#{equEquipamentoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{equEquipamentoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEquEquipamentoTitle_equId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.equId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEquEquipamentoTitle_equDescricao}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.equDescricao}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEquEquipamentoTitle_equAtivo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.equAtivo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEquEquipamentoTitle_equObservacoes}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.equObservacoes}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListEquEquipamentoTitle_equipamentoTipoTpeId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.equipamentoTipoTpeId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{equEquipamentoController.prepareView}" value="#{bundle.ListEquEquipamentoViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{equEquipamentoController.prepareEdit}" value="#{bundle.ListEquEquipamentoEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{equEquipamentoController.destroy}" value="#{bundle.ListEquEquipamentoDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+   
+                       <h:commandButton class="btn-primary" action="#{equEquipamentoController.prepareCreate}" value="Novo equipamento"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListEquEquipamentoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

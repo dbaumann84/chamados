@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewParParamentrosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewParParamentrosLabel_parId}"/>
+                    <h:outputText value="#{parParamentrosController.selected.parId}" title="#{bundle.ViewParParamentrosTitle_parId}"/>
+                    <h:outputText value="#{bundle.ViewParParamentrosLabel_parDescricao}"/>
+                    <h:outputText value="#{parParamentrosController.selected.parDescricao}" title="#{bundle.ViewParParamentrosTitle_parDescricao}"/>
+                    <h:outputText value="#{bundle.ViewParParamentrosLabel_parValor}"/>
+                    <h:outputText value="#{parParamentrosController.selected.parValor}" title="#{bundle.ViewParParamentrosTitle_parValor}"/>
+                    <h:outputText value="#{bundle.ViewParParamentrosLabel_parObservacao}"/>
+                    <h:outputText value="#{parParamentrosController.selected.parObservacao}" title="#{bundle.ViewParParamentrosTitle_parObservacao}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{parParamentrosController.destroyAndView}" value="#{bundle.ViewParParamentrosDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewParParamentrosEditLink}"/>
+                <br />
+                <h:commandLink action="#{parParamentrosController.prepareCreate}" value="#{bundle.ViewParParamentrosCreateLink}" />
+                <br />
+                <h:commandLink action="#{parParamentrosController.prepareList}" value="#{bundle.ViewParParamentrosShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewParParamentrosIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

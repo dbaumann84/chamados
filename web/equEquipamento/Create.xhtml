@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+      
+        <ui:define name="body">
+            <div id="main" class="container-fluid" style="margin-top: 50px">
+                 <h3 class="page-header">Adicionar novo equipamento</h3>
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:form>
+                    <h:panelGrid columns="2">
+
+                        <h:outputLabel value="#{bundle.CreateEquEquipamentoLabel_equDescricao}" for="equDescricao" />
+                        <h:inputText id="equDescricao" value="#{equEquipamentoController.selected.equDescricao}" title="#{bundle.CreateEquEquipamentoTitle_equDescricao}" />
+                        <h:outputLabel value="#{bundle.CreateEquEquipamentoLabel_equAtivo}" for="equAtivo" />
+                        <h:inputText id="equAtivo" value="#{equEquipamentoController.selected.equAtivo}" title="#{bundle.CreateEquEquipamentoTitle_equAtivo}" />
+                        <h:outputLabel value="Observações" for="equObservacoes" />
+                        <h:inputText id="equObservacoes" value="#{equEquipamentoController.selected.equObservacoes}" title="#{bundle.CreateEquEquipamentoTitle_equObservacoes}" />
+                        <h:outputLabel value="#{bundle.CreateEquEquipamentoLabel_equipamentoTipoTpeId}" for="equipamentoTipoTpeId" />
+                        <h:selectOneMenu id="equipamentoTipoTpeId" value="#{equEquipamentoController.selected.equipamentoTipoTpeId}" title="#{bundle.CreateEquEquipamentoTitle_equipamentoTipoTpeId}" required="true" requiredMessage="#{bundle.CreateEquEquipamentoRequiredMessage_equipamentoTipoTpeId}">
+                            <f:selectItems value="#{equipamentoTipoController.itemsAvailableSelectOne}"/>
+                        </h:selectOneMenu>
+                    </h:panelGrid>
+                    <br />
+                    <h:commandButton class="btn-primary" action="#{equEquipamentoController.create}" value="Salvar"/>
+                   
+                    <br />
+                    <br />
+                    <h:commandLink action="#{equEquipamentoController.prepareList}" value="#{bundle.CreateEquEquipamentoShowAllLink}" immediate="true"/>
+                    <br />
+                    <br />
+                    <h:link outcome="/index" value="#{bundle.CreateEquEquipamentoIndexLink}"/>
+                </h:form>
+            </div>
+        </ui:define>
+    </ui:composition>
+
+</html>

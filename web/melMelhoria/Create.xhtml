@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateMelMelhoriaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateMelMelhoriaLabel_melMelhoriaPK_melId}" for="melMelhoriaPK_melId" />
+                    <h:inputText id="melMelhoriaPK_melId" value="#{melMelhoriaController.selected.melMelhoriaPK.melId}" title="#{bundle.CreateMelMelhoriaTitle_melMelhoriaPK_melId}" required="true" requiredMessage="#{bundle.CreateMelMelhoriaRequiredMessage_melMelhoriaPK_melId}"/>
+                    <h:outputLabel value="#{bundle.CreateMelMelhoriaLabel_melObservacao}" for="melObservacao" />
+                    <h:inputTextarea rows="4" cols="30" id="melObservacao" value="#{melMelhoriaController.selected.melObservacao}" title="#{bundle.CreateMelMelhoriaTitle_melObservacao}" />
+                    <h:outputLabel value="#{bundle.CreateMelMelhoriaLabel_melDataHora}" for="melDataHora" />
+                    <h:inputText id="melDataHora" value="#{melMelhoriaController.selected.melDataHora}" title="#{bundle.CreateMelMelhoriaTitle_melDataHora}" required="true" requiredMessage="#{bundle.CreateMelMelhoriaRequiredMessage_melDataHora}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateMelMelhoriaLabel_melResposta}" for="melResposta" />
+                    <h:inputTextarea rows="4" cols="30" id="melResposta" value="#{melMelhoriaController.selected.melResposta}" title="#{bundle.CreateMelMelhoriaTitle_melResposta}" />
+                    <h:outputLabel value="#{bundle.CreateMelMelhoriaLabel_melResolvido}" for="melResolvido" />
+                    <h:inputText id="melResolvido" value="#{melMelhoriaController.selected.melResolvido}" title="#{bundle.CreateMelMelhoriaTitle_melResolvido}" />
+                    <h:outputLabel value="#{bundle.CreateMelMelhoriaLabel_equEquipamento}" for="equEquipamento" />
+                    <h:selectOneMenu id="equEquipamento" value="#{melMelhoriaController.selected.equEquipamento}" title="#{bundle.CreateMelMelhoriaTitle_equEquipamento}" required="true" requiredMessage="#{bundle.CreateMelMelhoriaRequiredMessage_equEquipamento}">
+                        <f:selectItems value="#{equEquipamentoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateMelMelhoriaLabel_labId}" for="labId" />
+                    <h:selectOneMenu id="labId" value="#{melMelhoriaController.selected.labId}" title="#{bundle.CreateMelMelhoriaTitle_labId}" required="true" requiredMessage="#{bundle.CreateMelMelhoriaRequiredMessage_labId}">
+                        <f:selectItems value="#{labLaboratorioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateMelMelhoriaLabel_usuId}" for="usuId" />
+                    <h:selectOneMenu id="usuId" value="#{melMelhoriaController.selected.usuId}" title="#{bundle.CreateMelMelhoriaTitle_usuId}" required="true" requiredMessage="#{bundle.CreateMelMelhoriaRequiredMessage_usuId}">
+                        <f:selectItems value="#{usuUsuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{melMelhoriaController.create}" value="#{bundle.CreateMelMelhoriaSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{melMelhoriaController.prepareList}" value="#{bundle.CreateMelMelhoriaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateMelMelhoriaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

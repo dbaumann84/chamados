@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewResReservaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewResReservaLabel_resId}"/>
+                    <h:outputText value="#{resReservaController.selected.resId}" title="#{bundle.ViewResReservaTitle_resId}"/>
+                    <h:outputText value="#{bundle.ViewResReservaLabel_resDataHora}"/>
+                    <h:outputText value="#{resReservaController.selected.resDataHora}" title="#{bundle.ViewResReservaTitle_resDataHora}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewResReservaLabel_resDataReservaInicial}"/>
+                    <h:outputText value="#{resReservaController.selected.resDataReservaInicial}" title="#{bundle.ViewResReservaTitle_resDataReservaInicial}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewResReservaLabel_resDataReservaFinal}"/>
+                    <h:outputText value="#{resReservaController.selected.resDataReservaFinal}" title="#{bundle.ViewResReservaTitle_resDataReservaFinal}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewResReservaLabel_resObservacao}"/>
+                    <h:outputText value="#{resReservaController.selected.resObservacao}" title="#{bundle.ViewResReservaTitle_resObservacao}"/>
+                    <h:outputText value="#{bundle.ViewResReservaLabel_equId}"/>
+                    <h:outputText value="#{resReservaController.selected.equId}" title="#{bundle.ViewResReservaTitle_equId}"/>
+                    <h:outputText value="#{bundle.ViewResReservaLabel_llabId}"/>
+                    <h:outputText value="#{resReservaController.selected.llabId}" title="#{bundle.ViewResReservaTitle_llabId}"/>
+                    <h:outputText value="#{bundle.ViewResReservaLabel_usuUsuarioIdUsuario}"/>
+                    <h:outputText value="#{resReservaController.selected.usuUsuarioIdUsuario}" title="#{bundle.ViewResReservaTitle_usuUsuarioIdUsuario}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{resReservaController.destroyAndView}" value="#{bundle.ViewResReservaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewResReservaEditLink}"/>
+                <br />
+                <h:commandLink action="#{resReservaController.prepareCreate}" value="#{bundle.ViewResReservaCreateLink}" />
+                <br />
+                <h:commandLink action="#{resReservaController.prepareList}" value="#{bundle.ViewResReservaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewResReservaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

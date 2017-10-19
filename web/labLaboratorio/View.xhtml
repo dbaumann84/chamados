@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewLabLaboratorioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewLabLaboratorioLabel_labId}"/>
+                    <h:outputText value="#{labLaboratorioController.selected.labId}" title="#{bundle.ViewLabLaboratorioTitle_labId}"/>
+                    <h:outputText value="#{bundle.ViewLabLaboratorioLabel_labDescricao}"/>
+                    <h:outputText value="#{labLaboratorioController.selected.labDescricao}" title="#{bundle.ViewLabLaboratorioTitle_labDescricao}"/>
+                    <h:outputText value="#{bundle.ViewLabLaboratorioLabel_labObservacao}"/>
+                    <h:outputText value="#{labLaboratorioController.selected.labObservacao}" title="#{bundle.ViewLabLaboratorioTitle_labObservacao}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{labLaboratorioController.destroyAndView}" value="#{bundle.ViewLabLaboratorioDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewLabLaboratorioEditLink}"/>
+                <br />
+                <h:commandLink action="#{labLaboratorioController.prepareCreate}" value="#{bundle.ViewLabLaboratorioCreateLink}" />
+                <br />
+                <h:commandLink action="#{labLaboratorioController.prepareList}" value="#{bundle.ViewLabLaboratorioShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewLabLaboratorioIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

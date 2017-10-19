@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListMelMelhoriaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListMelMelhoriaEmpty}" rendered="#{melMelhoriaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{melMelhoriaController.items.rowCount > 0}">
+                    <h:outputText value="#{melMelhoriaController.pagination.pageFirstItem + 1}..#{melMelhoriaController.pagination.pageLastItem + 1}/#{melMelhoriaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{melMelhoriaController.previous}" value="#{bundle.Previous} #{melMelhoriaController.pagination.pageSize}" rendered="#{melMelhoriaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{melMelhoriaController.next}" value="#{bundle.Next} #{melMelhoriaController.pagination.pageSize}" rendered="#{melMelhoriaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{melMelhoriaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMelMelhoriaTitle_melMelhoriaPK_melId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.melMelhoriaPK.melId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMelMelhoriaTitle_melObservacao}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.melObservacao}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMelMelhoriaTitle_melDataHora}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.melDataHora}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMelMelhoriaTitle_melResposta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.melResposta}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMelMelhoriaTitle_melResolvido}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.melResolvido}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMelMelhoriaTitle_equEquipamento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.equEquipamento}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMelMelhoriaTitle_labId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.labId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMelMelhoriaTitle_usuId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.usuId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{melMelhoriaController.prepareView}" value="#{bundle.ListMelMelhoriaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{melMelhoriaController.prepareEdit}" value="#{bundle.ListMelMelhoriaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{melMelhoriaController.destroy}" value="#{bundle.ListMelMelhoriaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{melMelhoriaController.prepareCreate}" value="#{bundle.ListMelMelhoriaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListMelMelhoriaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

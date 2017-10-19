@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewUsuUsuarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewUsuUsuarioLabel_usuId}"/>
+                    <h:outputText value="#{usuUsuarioController.selected.usuId}" title="#{bundle.ViewUsuUsuarioTitle_usuId}"/>
+                    <h:outputText value="#{bundle.ViewUsuUsuarioLabel_usuNomeCompleto}"/>
+                    <h:outputText value="#{usuUsuarioController.selected.usuNomeCompleto}" title="#{bundle.ViewUsuUsuarioTitle_usuNomeCompleto}"/>
+                    <h:outputText value="#{bundle.ViewUsuUsuarioLabel_usuEmail}"/>
+                    <h:outputText value="#{usuUsuarioController.selected.usuEmail}" title="#{bundle.ViewUsuUsuarioTitle_usuEmail}"/>
+                    <h:outputText value="#{bundle.ViewUsuUsuarioLabel_usuSenha}"/>
+                    <h:outputText value="#{usuUsuarioController.selected.usuSenha}" title="#{bundle.ViewUsuUsuarioTitle_usuSenha}"/>
+                    <h:outputText value="#{bundle.ViewUsuUsuarioLabel_usuAdmin}"/>
+                    <h:outputText value="#{usuUsuarioController.selected.usuAdmin}" title="#{bundle.ViewUsuUsuarioTitle_usuAdmin}"/>
+                    <h:outputText value="#{bundle.ViewUsuUsuarioLabel_usuTelefone}"/>
+                    <h:outputText value="#{usuUsuarioController.selected.usuTelefone}" title="#{bundle.ViewUsuUsuarioTitle_usuTelefone}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{usuUsuarioController.destroyAndView}" value="#{bundle.ViewUsuUsuarioDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewUsuUsuarioEditLink}"/>
+                <br />
+                <h:commandLink action="#{usuUsuarioController.prepareCreate}" value="#{bundle.ViewUsuUsuarioCreateLink}" />
+                <br />
+                <h:commandLink action="#{usuUsuarioController.prepareList}" value="#{bundle.ViewUsuUsuarioShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewUsuUsuarioIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

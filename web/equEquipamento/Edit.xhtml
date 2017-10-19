@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditEquEquipamentoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditEquEquipamentoLabel_equId}" for="equId" />
+                    <h:inputText id="equId" value="#{equEquipamentoController.selected.equId}" title="#{bundle.EditEquEquipamentoTitle_equId}" required="true" requiredMessage="#{bundle.EditEquEquipamentoRequiredMessage_equId}"/>
+                    <h:outputLabel value="#{bundle.EditEquEquipamentoLabel_equDescricao}" for="equDescricao" />
+                    <h:inputText id="equDescricao" value="#{equEquipamentoController.selected.equDescricao}" title="#{bundle.EditEquEquipamentoTitle_equDescricao}" />
+                    <h:outputLabel value="#{bundle.EditEquEquipamentoLabel_equAtivo}" for="equAtivo" />
+                    <h:inputText id="equAtivo" value="#{equEquipamentoController.selected.equAtivo}" title="#{bundle.EditEquEquipamentoTitle_equAtivo}" />
+                    <h:outputLabel value="#{bundle.EditEquEquipamentoLabel_equObservacoes}" for="equObservacoes" />
+                    <h:inputText id="equObservacoes" value="#{equEquipamentoController.selected.equObservacoes}" title="#{bundle.EditEquEquipamentoTitle_equObservacoes}" />
+                    <h:outputLabel value="#{bundle.EditEquEquipamentoLabel_equipamentoTipoTpeId}" for="equipamentoTipoTpeId" />
+                    <h:selectOneMenu id="equipamentoTipoTpeId" value="#{equEquipamentoController.selected.equipamentoTipoTpeId}" title="#{bundle.EditEquEquipamentoTitle_equipamentoTipoTpeId}" required="true" requiredMessage="#{bundle.EditEquEquipamentoRequiredMessage_equipamentoTipoTpeId}">
+                        <f:selectItems value="#{equipamentoTipoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{equEquipamentoController.update}" value="#{bundle.EditEquEquipamentoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditEquEquipamentoViewLink}"/>
+                <br />
+                <h:commandLink action="#{equEquipamentoController.prepareList}" value="#{bundle.EditEquEquipamentoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditEquEquipamentoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

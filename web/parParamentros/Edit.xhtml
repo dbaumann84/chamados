@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditParParamentrosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditParParamentrosLabel_parId}" for="parId" />
+                    <h:inputText id="parId" value="#{parParamentrosController.selected.parId}" title="#{bundle.EditParParamentrosTitle_parId}" required="true" requiredMessage="#{bundle.EditParParamentrosRequiredMessage_parId}"/>
+                    <h:outputLabel value="#{bundle.EditParParamentrosLabel_parDescricao}" for="parDescricao" />
+                    <h:inputText id="parDescricao" value="#{parParamentrosController.selected.parDescricao}" title="#{bundle.EditParParamentrosTitle_parDescricao}" required="true" requiredMessage="#{bundle.EditParParamentrosRequiredMessage_parDescricao}"/>
+                    <h:outputLabel value="#{bundle.EditParParamentrosLabel_parValor}" for="parValor" />
+                    <h:inputText id="parValor" value="#{parParamentrosController.selected.parValor}" title="#{bundle.EditParParamentrosTitle_parValor}" required="true" requiredMessage="#{bundle.EditParParamentrosRequiredMessage_parValor}"/>
+                    <h:outputLabel value="#{bundle.EditParParamentrosLabel_parObservacao}" for="parObservacao" />
+                    <h:inputTextarea rows="4" cols="30" id="parObservacao" value="#{parParamentrosController.selected.parObservacao}" title="#{bundle.EditParParamentrosTitle_parObservacao}" />
+                </h:panelGrid>
+                <h:commandLink action="#{parParamentrosController.update}" value="#{bundle.EditParParamentrosSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditParParamentrosViewLink}"/>
+                <br />
+                <h:commandLink action="#{parParamentrosController.prepareList}" value="#{bundle.EditParParamentrosShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditParParamentrosIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

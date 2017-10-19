@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListParParamentrosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListParParamentrosEmpty}" rendered="#{parParamentrosController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{parParamentrosController.items.rowCount > 0}">
+                    <h:outputText value="#{parParamentrosController.pagination.pageFirstItem + 1}..#{parParamentrosController.pagination.pageLastItem + 1}/#{parParamentrosController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{parParamentrosController.previous}" value="#{bundle.Previous} #{parParamentrosController.pagination.pageSize}" rendered="#{parParamentrosController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{parParamentrosController.next}" value="#{bundle.Next} #{parParamentrosController.pagination.pageSize}" rendered="#{parParamentrosController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{parParamentrosController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListParParamentrosTitle_parId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.parId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListParParamentrosTitle_parDescricao}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.parDescricao}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListParParamentrosTitle_parValor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.parValor}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListParParamentrosTitle_parObservacao}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.parObservacao}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{parParamentrosController.prepareView}" value="#{bundle.ListParParamentrosViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{parParamentrosController.prepareEdit}" value="#{bundle.ListParParamentrosEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{parParamentrosController.destroy}" value="#{bundle.ListParParamentrosDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{parParamentrosController.prepareCreate}" value="#{bundle.ListParParamentrosCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListParParamentrosIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

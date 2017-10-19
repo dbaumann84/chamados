@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateParParamentrosTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateParParamentrosLabel_parId}" for="parId" />
+                    <h:inputText id="parId" value="#{parParamentrosController.selected.parId}" title="#{bundle.CreateParParamentrosTitle_parId}" required="true" requiredMessage="#{bundle.CreateParParamentrosRequiredMessage_parId}"/>
+                    <h:outputLabel value="#{bundle.CreateParParamentrosLabel_parDescricao}" for="parDescricao" />
+                    <h:inputText id="parDescricao" value="#{parParamentrosController.selected.parDescricao}" title="#{bundle.CreateParParamentrosTitle_parDescricao}" required="true" requiredMessage="#{bundle.CreateParParamentrosRequiredMessage_parDescricao}"/>
+                    <h:outputLabel value="#{bundle.CreateParParamentrosLabel_parValor}" for="parValor" />
+                    <h:inputText id="parValor" value="#{parParamentrosController.selected.parValor}" title="#{bundle.CreateParParamentrosTitle_parValor}" required="true" requiredMessage="#{bundle.CreateParParamentrosRequiredMessage_parValor}"/>
+                    <h:outputLabel value="#{bundle.CreateParParamentrosLabel_parObservacao}" for="parObservacao" />
+                    <h:inputTextarea rows="4" cols="30" id="parObservacao" value="#{parParamentrosController.selected.parObservacao}" title="#{bundle.CreateParParamentrosTitle_parObservacao}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{parParamentrosController.create}" value="#{bundle.CreateParParamentrosSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{parParamentrosController.prepareList}" value="#{bundle.CreateParParamentrosShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateParParamentrosIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

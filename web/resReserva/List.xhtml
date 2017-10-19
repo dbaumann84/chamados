@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListResReservaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListResReservaEmpty}" rendered="#{resReservaController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{resReservaController.items.rowCount > 0}">
+                    <h:outputText value="#{resReservaController.pagination.pageFirstItem + 1}..#{resReservaController.pagination.pageLastItem + 1}/#{resReservaController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{resReservaController.previous}" value="#{bundle.Previous} #{resReservaController.pagination.pageSize}" rendered="#{resReservaController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{resReservaController.next}" value="#{bundle.Next} #{resReservaController.pagination.pageSize}" rendered="#{resReservaController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{resReservaController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResReservaTitle_resId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.resId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResReservaTitle_resDataHora}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.resDataHora}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResReservaTitle_resDataReservaInicial}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.resDataReservaInicial}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResReservaTitle_resDataReservaFinal}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.resDataReservaFinal}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResReservaTitle_resObservacao}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.resObservacao}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResReservaTitle_equId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.equId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResReservaTitle_llabId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.llabId}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListResReservaTitle_usuUsuarioIdUsuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.usuUsuarioIdUsuario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{resReservaController.prepareView}" value="#{bundle.ListResReservaViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{resReservaController.prepareEdit}" value="#{bundle.ListResReservaEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{resReservaController.destroy}" value="#{bundle.ListResReservaDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{resReservaController.prepareCreate}" value="#{bundle.ListResReservaCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListResReservaIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
