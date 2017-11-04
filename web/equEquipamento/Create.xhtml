@@ -6,30 +6,48 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:composition template="/template.xhtml">
-      
+
         <ui:define name="body">
-            <div id="main" class="container-fluid" style="margin-top: 50px">
-                 <h3 class="page-header">Adicionar novo equipamento</h3>
+                <h3 class="page-header">Adicionar novo equipamento</h3>
                 <h:panelGroup id="messagePanel" layout="block">
                     <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
                 </h:panelGroup>
-                <h:form>
-                    <h:panelGrid columns="2">
+                <h:form class="form-horizontal">
 
-                        <h:outputLabel value="#{bundle.CreateEquEquipamentoLabel_equDescricao}" for="equDescricao" />
-                        <h:inputText id="equDescricao" value="#{equEquipamentoController.selected.equDescricao}" title="#{bundle.CreateEquEquipamentoTitle_equDescricao}" />
-                        <h:outputLabel value="#{bundle.CreateEquEquipamentoLabel_equAtivo}" for="equAtivo" />
-                        <h:inputText id="equAtivo" value="#{equEquipamentoController.selected.equAtivo}" title="#{bundle.CreateEquEquipamentoTitle_equAtivo}" />
-                        <h:outputLabel value="Observações" for="equObservacoes" />
-                        <h:inputText id="equObservacoes" value="#{equEquipamentoController.selected.equObservacoes}" title="#{bundle.CreateEquEquipamentoTitle_equObservacoes}" />
-                        <h:outputLabel value="#{bundle.CreateEquEquipamentoLabel_equipamentoTipoTpeId}" for="equipamentoTipoTpeId" />
-                        <h:selectOneMenu id="equipamentoTipoTpeId" value="#{equEquipamentoController.selected.equipamentoTipoTpeId}" title="#{bundle.CreateEquEquipamentoTitle_equipamentoTipoTpeId}" required="true" requiredMessage="#{bundle.CreateEquEquipamentoRequiredMessage_equipamentoTipoTpeId}">
-                            <f:selectItems value="#{equipamentoTipoController.itemsAvailableSelectOne}"/>
-                        </h:selectOneMenu>
-                    </h:panelGrid>
-                    <br />
-                    <h:commandButton class="btn-primary" action="#{equEquipamentoController.create}" value="Salvar"/>
-                   
+                    <div class="form-group">    
+                        <h:outputLabel class="control-label col-sm-2" value="#{bundle.CreateEquEquipamentoLabel_equDescricao}" for="equDescricao" />
+                        <div class="col-sm-10">
+                            <h:inputText class="form-control" id="equDescricao" value="#{equEquipamentoController.selected.equDescricao}" title="#{bundle.CreateEquEquipamentoTitle_equDescricao}" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h:outputLabel class="control-label col-sm-2" value="#{bundle.CreateEquEquipamentoLabel_equAtivo}" for="equAtivo" />
+                        <div class="col-sm-10">
+                            <h:selectOneMenu class="form-control" id="equAtivo" value="#{equEquipamentoController.selected.equAtivo}" title="#{bundle.CreateEquEquipamentoTitle_equAtivo}" required="true" requiredMessage="#{bundle.CreateEquEquipamentoRequiredMessage_equAtivo}">
+                                <f:selectItem itemValue="#{1}" itemLabel="Sim"/>
+                                <f:selectItem itemValue="#{0}" itemLabel="Não" />
+                            </h:selectOneMenu>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h:outputLabel class="control-label col-sm-2" value="Observações" for="equObservacoes" />
+                        <div class="col-sm-10">
+                            <h:inputText class="form-control" id="equObservacoes" value="#{equEquipamentoController.selected.equObservacoes}" title="#{bundle.CreateEquEquipamentoTitle_equObservacoes}" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h:outputLabel class="control-label col-sm-2" value="#{bundle.CreateEquEquipamentoLabel_equipamentoTipoTpeId}" for="equipamentoTipoTpeId" />
+                        <div class="col-sm-10">
+                            <h:selectOneMenu class="form-control" id="equipamentoTipoTpeId" value="#{equEquipamentoController.selected.equipamentoTipoTpeId}" title="#{bundle.CreateEquEquipamentoTitle_equipamentoTipoTpeId}" required="true" requiredMessage="#{bundle.CreateEquEquipamentoRequiredMessage_equipamentoTipoTpeId}">
+                                <f:selectItems value="#{equipamentoTipoController.itemsAvailableSelectOne}"/>
+                            </h:selectOneMenu>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <h:commandButton class="btn-primary" action="#{equEquipamentoController.create}" value="Salvar"/>
+                        </div>
+                    </div>
                     <br />
                     <br />
                     <h:commandLink action="#{equEquipamentoController.prepareList}" value="#{bundle.CreateEquEquipamentoShowAllLink}" immediate="true"/>
@@ -37,7 +55,6 @@
                     <br />
                     <h:link outcome="/index" value="#{bundle.CreateEquEquipamentoIndexLink}"/>
                 </h:form>
-            </div>
         </ui:define>
     </ui:composition>
 
