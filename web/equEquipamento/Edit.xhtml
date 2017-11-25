@@ -17,19 +17,22 @@
                 <div class="form-group"> 
                     <h:outputLabel class="control-label col-sm-2" value="#{bundle.EditEquEquipamentoLabel_equId}" for="equId" />
                     <div class="col-sm-10">
-                        <h:inputText class="form-control" id="equId" value="#{equEquipamentoController.selected.equId}" title="#{bundle.EditEquEquipamentoTitle_equId}" required="true" requiredMessage="#{bundle.EditEquEquipamentoRequiredMessage_equId}"/>
+                        <h:inputText class="form-control" readonly="true" id="equId" value="#{equEquipamentoController.selected.equId}" title="#{bundle.EditEquEquipamentoTitle_equId}" required="true" requiredMessage="#{bundle.EditEquEquipamentoRequiredMessage_equId}"/>
                     </div>
                 </div>
                 <div class="form-group"> 
                     <h:outputLabel class="control-label col-sm-2" value="#{bundle.EditEquEquipamentoLabel_equDescricao}" for="equDescricao" />
                     <div class="col-sm-10">
-                        <h:inputText class="form-control" id="equDescricao" value="#{equEquipamentoController.selected.equDescricao}" title="#{bundle.EditEquEquipamentoTitle_equDescricao}" />
+                        <h:inputText class="form-control" id="equDescricao" value="#{equEquipamentoController.selected.equDescricao}" title="#{bundle.EditEquEquipamentoTitle_equDescricao}" required="true" requiredMessage="#{bundle.EditEquEquipamentoRequiredMessage_equDescricao}"/>
                     </div>
                 </div>
                 <div class="form-group"> 
                     <h:outputLabel class="control-label col-sm-2" value="#{bundle.EditEquEquipamentoLabel_equAtivo}" for="equAtivo" />
                     <div class="col-sm-10">
-                        <h:inputText class="form-control" id="equAtivo" value="#{equEquipamentoController.selected.equAtivo}" title="#{bundle.EditEquEquipamentoTitle_equAtivo}" />
+                        <h:selectOneMenu class="form-control" id="equAtivo" value="#{equEquipamentoController.selected.equAtivo}" title="#{bundle.CreateEquEquipamentoTitle_equAtivo}" required="true" requiredMessage="#{bundle.CreateEquEquipamentoRequiredMessage_equAtivo}">
+                            <f:selectItem itemValue="#{1}" itemLabel="Sim"/>
+                            <f:selectItem itemValue="#{0}" itemLabel="Não" />
+                        </h:selectOneMenu>
                     </div>
                 </div>
                 <div class="form-group"> 
@@ -48,12 +51,10 @@
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <h:commandLink class="btn-primary" action="#{equEquipamentoController.update}" value="#{bundle.EditEquEquipamentoSaveLink}"/>
+                        <h:commandLink class="btn btn-primary" action="#{equEquipamentoController.update}" value="#{bundle.EditEquEquipamentoSaveLink}"/>
                     </div>
                 </div>   
                 <br />
-                <br />
-                <h:link outcome="View" value="#{bundle.EditEquEquipamentoViewLink}"/>
                 <br />
                 <h:commandLink action="#{equEquipamentoController.prepareList}" value="#{bundle.EditEquEquipamentoShowAllLink}" immediate="true"/>
                 <br />

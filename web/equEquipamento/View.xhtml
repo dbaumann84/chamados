@@ -6,37 +6,60 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:composition template="/template.xhtml">
-      
+
         <ui:define name="body">
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputText value="#{bundle.ViewEquEquipamentoLabel_equId}"/>
-                    <h:outputText value="#{equEquipamentoController.selected.equId}" title="#{bundle.ViewEquEquipamentoTitle_equId}"/>
-                    <h:outputText value="#{bundle.ViewEquEquipamentoLabel_equDescricao}"/>
-                    <h:outputText value="#{equEquipamentoController.selected.equDescricao}" title="#{bundle.ViewEquEquipamentoTitle_equDescricao}"/>
-                    <h:outputText value="#{bundle.ViewEquEquipamentoLabel_equAtivo}"/>
-                    <h:outputText value="#{equEquipamentoController.selected.equAtivo}" title="#{bundle.ViewEquEquipamentoTitle_equAtivo}"/>
-                    <h:outputText value="#{bundle.ViewEquEquipamentoLabel_equObservacoes}"/>
-                    <h:outputText value="#{equEquipamentoController.selected.equObservacoes}" title="#{bundle.ViewEquEquipamentoTitle_equObservacoes}"/>
-                    <h:outputText value="#{bundle.ViewEquEquipamentoLabel_equipamentoTipoTpeId}"/>
-                    <h:outputText value="#{equEquipamentoController.selected.equipamentoTipoTpeId}" title="#{bundle.ViewEquEquipamentoTitle_equipamentoTipoTpeId}"/>
-                </h:panelGrid>
+            <h:form class="form-horizontal">
+                <div class="form-group"> 
+                    <h:outputLabel class="control-label col-sm-2" value="#{bundle.EditEquEquipamentoLabel_equId}" for="equId" />
+                    <div class="col-sm-10">
+                        <h:outputText class="form-control" value="#{equEquipamentoController.selected.equId}" title="#{bundle.ViewEquEquipamentoTitle_equId}"/>    
+                    </div>
+                </div>
+
+                <div class="form-group"> 
+                    <h:outputLabel class="control-label col-sm-2" value="#{bundle.EditEquEquipamentoLabel_equDescricao}" for="equDescricao" />
+                    <div class="col-sm-10">
+                        <h:outputText class="form-control" value="#{equEquipamentoController.selected.equDescricao}" title="#{bundle.ViewEquEquipamentoTitle_equDescricao}"/>
+                    </div>
+                </div>
+
+                <div class="form-group"> 
+                    <h:outputLabel class="control-label col-sm-2" value="#{bundle.EditEquEquipamentoLabel_equAtivo}" for="equAtivo" />
+                    <div class="col-sm-10">
+                        <h:outputText class="form-control" value="#{equEquipamentoController.selected.equAtivo==1?'Sim':'Não'}" title="#{bundle.ViewEquEquipamentoTitle_equAtivo}"/>
+                    </div>
+                </div>
+
+                <div class="form-group"> 
+                    <h:outputLabel class="control-label col-sm-2" value="#{bundle.EditEquEquipamentoLabel_equObservacoes}" for="equObservacoes" />
+                    <div class="col-sm-10">
+                        <h:outputText class="form-control" value="#{equEquipamentoController.selected.equObservacoes}" title="#{bundle.ViewEquEquipamentoTitle_equObservacoes}"/>
+                    </div>
+                </div>
+
+                <div class="form-group"> 
+                    <h:outputLabel class="control-label col-sm-2" value="#{bundle.EditEquEquipamentoLabel_equipamentoTipoTpeId}" for="equipamentoTipoTpeId" />
+                    <div class="col-sm-10">
+                        <h:outputText class="form-control" value="#{equEquipamentoController.selected.equipamentoTipoTpeId.tpeDescricao}" title="#{bundle.ViewEquEquipamentoTitle_equipamentoTipoTpeId}"/>
+                    </div>
+                </div>
                 <br />
-                <h:commandLink action="#{equEquipamentoController.destroyAndView}" value="#{bundle.ViewEquEquipamentoDestroyLink}"/>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <h:commandLink class="btn btn-danger" action="#{equEquipamentoController.destroyAndView}" value="#{bundle.ViewEquEquipamentoDestroyLink}"/>
+                        <h:link class="btn btn-primary" outcome="Edit" value="#{bundle.ViewEquEquipamentoEditLink}"/>
+                        <h:commandLink class="btn btn-info" action="#{equEquipamentoController.prepareCreate}" value="#{bundle.ViewEquEquipamentoCreateLink}" />
+                    </div>
+                </div>
                 <br />
-                <br />
-                <h:link outcome="Edit" value="#{bundle.ViewEquEquipamentoEditLink}"/>
-                <br />
-                <h:commandLink action="#{equEquipamentoController.prepareCreate}" value="#{bundle.ViewEquEquipamentoCreateLink}" />
                 <br />
                 <h:commandLink action="#{equEquipamentoController.prepareList}" value="#{bundle.ViewEquEquipamentoShowAllLink}"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{bundle.ViewEquEquipamentoIndexLink}"/>
-
             </h:form>
         </ui:define>
     </ui:composition>
