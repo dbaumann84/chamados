@@ -13,17 +13,25 @@
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.EditEquipamentoTipoLabel_tpeId}" for="tpeId" />
-                    <h:inputText id="tpeId" value="#{equipamentoTipoController.selected.tpeId}" title="#{bundle.EditEquipamentoTipoTitle_tpeId}" required="true" requiredMessage="#{bundle.EditEquipamentoTipoRequiredMessage_tpeId}"/>
-                    <h:outputLabel value="#{bundle.EditEquipamentoTipoLabel_tpeDescricao}" for="tpeDescricao" />
-                    <h:inputText id="tpeDescricao" value="#{equipamentoTipoController.selected.tpeDescricao}" title="#{bundle.EditEquipamentoTipoTitle_tpeDescricao}" />
-                </h:panelGrid>
-                <h:commandLink action="#{equipamentoTipoController.update}" value="#{bundle.EditEquipamentoTipoSaveLink}"/>
+            <h:form class="form-horizontal">
+                <div class="form-group"> 
+                    <h:outputLabel class="control-label col-sm-2" value="#{bundle.EditEquipamentoTipoLabel_tpeId}" for="tpeId" />
+                    <div class="col-sm-10">
+                        <h:inputText class="form-control" readonly="true" id="tpeId" value="#{equipamentoTipoController.selected.tpeId}" title="#{bundle.EditEquipamentoTipoTitle_tpeId}" required="true" requiredMessage="#{bundle.EditEquipamentoTipoRequiredMessage_tpeId}"/>
+                    </div>
+                </div>
+                <div class="form-group"> 
+                    <h:outputLabel class="control-label col-sm-2" value="#{bundle.EditEquipamentoTipoLabel_tpeDescricao}" for="tpeDescricao" />
+                    <div class="col-sm-10">
+                        <h:inputText class="form-control" id="tpeDescricao" value="#{equipamentoTipoController.selected.tpeDescricao}" title="#{bundle.EditEquipamentoTipoTitle_tpeDescricao}" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <h:commandLink class="btn btn-primary" action="#{equipamentoTipoController.update}" value="#{bundle.EditEquipamentoTipoSaveLink}"/>
+                    </div>
+                </div>   
                 <br />
-                <br />
-                <h:link outcome="View" value="#{bundle.EditEquipamentoTipoViewLink}"/>
                 <br />
                 <h:commandLink action="#{equipamentoTipoController.prepareList}" value="#{bundle.EditEquipamentoTipoShowAllLink}" immediate="true"/>
                 <br />

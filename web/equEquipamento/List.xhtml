@@ -15,9 +15,11 @@
                 </h:panelGroup>
                 <h:outputText escape="false" value="#{bundle.ListEquEquipamentoEmpty}" rendered="#{equEquipamentoController.items.rowCount == 0}"/>
                 <div class="panel panel-default" rendered="#{equEquipamentoController.items.rowCount > 0}">
-                    <div class="panel-heading"><div class="btn-group" role="group">
+                    <div class="panel-heading">
+                        <div class="btn-group" role="group">
                             <h:commandButton class="btn btn-primary " action="#{equEquipamentoController.prepareCreate}" value="Novo equipamento"/>
-                        </div></div>
+                        </div>
+                    </div>
                     <div class="panel-body">
                         <h:dataTable class="table table-striped table-hover table-bordered" value="#{equEquipamentoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" >
                             <h:column>
