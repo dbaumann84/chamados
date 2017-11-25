@@ -13,22 +13,44 @@
             <h:panelGroup id="messagePanel" layout="block">
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
-            <h:form>
-                <h:panelGrid columns="2">
-                    <h:outputLabel value="#{bundle.EditEquEquipamentoLabel_equId}" for="equId" />
-                    <h:inputText id="equId" value="#{equEquipamentoController.selected.equId}" title="#{bundle.EditEquEquipamentoTitle_equId}" required="true" requiredMessage="#{bundle.EditEquEquipamentoRequiredMessage_equId}"/>
-                    <h:outputLabel value="#{bundle.EditEquEquipamentoLabel_equDescricao}" for="equDescricao" />
-                    <h:inputText id="equDescricao" value="#{equEquipamentoController.selected.equDescricao}" title="#{bundle.EditEquEquipamentoTitle_equDescricao}" />
-                    <h:outputLabel value="#{bundle.EditEquEquipamentoLabel_equAtivo}" for="equAtivo" />
-                    <h:inputText id="equAtivo" value="#{equEquipamentoController.selected.equAtivo}" title="#{bundle.EditEquEquipamentoTitle_equAtivo}" />
-                    <h:outputLabel value="#{bundle.EditEquEquipamentoLabel_equObservacoes}" for="equObservacoes" />
-                    <h:inputText id="equObservacoes" value="#{equEquipamentoController.selected.equObservacoes}" title="#{bundle.EditEquEquipamentoTitle_equObservacoes}" />
-                    <h:outputLabel value="#{bundle.EditEquEquipamentoLabel_equipamentoTipoTpeId}" for="equipamentoTipoTpeId" />
-                    <h:selectOneMenu id="equipamentoTipoTpeId" value="#{equEquipamentoController.selected.equipamentoTipoTpeId}" title="#{bundle.EditEquEquipamentoTitle_equipamentoTipoTpeId}" required="true" requiredMessage="#{bundle.EditEquEquipamentoRequiredMessage_equipamentoTipoTpeId}">
-                        <f:selectItems value="#{equipamentoTipoController.itemsAvailableSelectOne}"/>
-                    </h:selectOneMenu>
-                </h:panelGrid>
-                <h:commandLink action="#{equEquipamentoController.update}" value="#{bundle.EditEquEquipamentoSaveLink}"/>
+            <h:form class="form-horizontal">
+                <div class="form-group"> 
+                    <h:outputLabel class="control-label col-sm-2" value="#{bundle.EditEquEquipamentoLabel_equId}" for="equId" />
+                    <div class="col-sm-10">
+                        <h:inputText class="form-control" id="equId" value="#{equEquipamentoController.selected.equId}" title="#{bundle.EditEquEquipamentoTitle_equId}" required="true" requiredMessage="#{bundle.EditEquEquipamentoRequiredMessage_equId}"/>
+                    </div>
+                </div>
+                <div class="form-group"> 
+                    <h:outputLabel class="control-label col-sm-2" value="#{bundle.EditEquEquipamentoLabel_equDescricao}" for="equDescricao" />
+                    <div class="col-sm-10">
+                        <h:inputText class="form-control" id="equDescricao" value="#{equEquipamentoController.selected.equDescricao}" title="#{bundle.EditEquEquipamentoTitle_equDescricao}" />
+                    </div>
+                </div>
+                <div class="form-group"> 
+                    <h:outputLabel class="control-label col-sm-2" value="#{bundle.EditEquEquipamentoLabel_equAtivo}" for="equAtivo" />
+                    <div class="col-sm-10">
+                        <h:inputText class="form-control" id="equAtivo" value="#{equEquipamentoController.selected.equAtivo}" title="#{bundle.EditEquEquipamentoTitle_equAtivo}" />
+                    </div>
+                </div>
+                <div class="form-group"> 
+                    <h:outputLabel class="control-label col-sm-2" value="#{bundle.EditEquEquipamentoLabel_equObservacoes}" for="equObservacoes" />
+                    <div class="col-sm-10">
+                        <h:inputText class="form-control" id="equObservacoes" value="#{equEquipamentoController.selected.equObservacoes}" title="#{bundle.EditEquEquipamentoTitle_equObservacoes}" />
+                    </div>
+                </div>
+                <div class="form-group"> 
+                    <h:outputLabel class="control-label col-sm-2" value="#{bundle.EditEquEquipamentoLabel_equipamentoTipoTpeId}" for="equipamentoTipoTpeId" />
+                    <div class="col-sm-10">
+                        <h:selectOneMenu class="form-control" id="equipamentoTipoTpeId" value="#{equEquipamentoController.selected.equipamentoTipoTpeId}" title="#{bundle.EditEquEquipamentoTitle_equipamentoTipoTpeId}" required="true" requiredMessage="#{bundle.EditEquEquipamentoRequiredMessage_equipamentoTipoTpeId}">
+                            <f:selectItems value="#{equipamentoTipoController.itemsAvailableSelectOne}"/>
+                        </h:selectOneMenu>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <h:commandLink class="btn-primary" action="#{equEquipamentoController.update}" value="#{bundle.EditEquEquipamentoSaveLink}"/>
+                    </div>
+                </div>   
                 <br />
                 <br />
                 <h:link outcome="View" value="#{bundle.EditEquEquipamentoViewLink}"/>
